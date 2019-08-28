@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Carga do css -->
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>My File</title>
+</head>
+
+<body>
+    <h1>Welcome to my <img src="{% static 'img/amazonS3.png' %}" alt="Amazon S3" height="42">  first page!</h1>
+
+    <h1>Add File</h1>
+
+    {% if messages %}
+        {% for message in messages.values %}
+                <strong>{{ message }}</strong>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'myfile:index' %}" method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+
+        <span class="file-label">Choose a description file...</span><br />
+        <input type="text" id="description_file" name="description_file" required minlength="4" maxlength="80" size="80"><br />
+        <br />
+
+        <span class="file-label">Choose a file:</span>
+        <label class="file-label">
+              <input class="file-input" type="file" name="file_up">
+              <span class="file-cta"> </span>
+        </label><br />
+
+        <br /><input type="submit" value="Add" class="button is-primary" />
+            <a href="{% url 'mypage:index' %}" title="">  Try add an image</a>
+    </form>
+
+    {% if file_url %}
+        <h2>Last download file</h2>
+        <p>File updated at: <a href="{{ file_url }}">{{ file_url }}</a></p>
+        <br /><a href="{% url 'myfile:exclude_files' %}" class="button">"Please click here to clean your files"</a><br />
+    {% else %}
+        <br /><p>No Files at moment.</p><br />
+    {% endif %}
+</body>
+</html>

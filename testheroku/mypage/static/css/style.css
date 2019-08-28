@@ -1,0 +1,17 @@
+html, body {
+	margin-top: 1px;
+	height:100%;
+}
+
+body {
+    background: #F3EAB2;
+    color: #85144b;
+}
+
+.well {
+  padding: 0px 0px 0px 0px;
+}
+
+.right {
+  float: right;
+}

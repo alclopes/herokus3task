@@ -1,0 +1,2 @@
+web: gunicorn testheroku.wsgi --log-file -
+worker: celery -A testheroku worker -B -l INFO
