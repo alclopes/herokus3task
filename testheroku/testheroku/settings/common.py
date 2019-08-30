@@ -93,6 +93,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+
 # ########################## AWS S3
 USE_S3 = config('USE_S3', default=False, cast=bool)
 if USE_S3:
@@ -123,27 +124,9 @@ else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# ########################## REDIS
-# BROKER_URL = config('REDIS_URL_DESENV')
-# CELERY_BROKER_URL = config('REDIS_URL_DESENV')
-# REDIS_HOST = 'localhost'
-# REDIS_PORT = '6379'
-# BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-# BROKER_URL = 'redis://localhost:6379/0'
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-# CELERY_TASK_IGNORE_RESULT = True
-# BROKER_POOL_LIMIT = 0
-# CELERY_REDIS_MAX_CONNECTIONS = 40
-CELERY_BROKER_URL = config('REDIS_URL_DESENV')
 
-# ########################## CELERY
-# CELERY_IMPORTS = ('mypage.tasks',)
-# CELERY_TIMEZONE = 'UTC'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
+# ########################## REDIS
+CELERY_BROKER_URL = config('REDIS_URL_DESENV')
 
 
 # Configurando Celery para rodar em paralelo (True => para testes)
@@ -155,15 +138,3 @@ CELERY_TASK_ALWAYS_EAGER = config('CELERY_TASK_ALWAYS_EAGER_DESENV', default=Fal
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
 
-
-# # https://medium.com/luizalabs/executando-processos-em-background-com-django-e-celery-5ade867e1bf3
-# from kombu import Exchange, Queue
-# task_default_queue = 'default'  # 1
-# default_exchange = Exchange('media', type='direct')  # 2
-# task_queues = (
-#     Queue(
-#         'media_queue',  # 3
-#         exchange=default_exchange,  # 4
-#         routing_key='video'  # 5
-#     )
-# )

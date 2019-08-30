@@ -10,8 +10,8 @@ from django.utils import timezone
 @shared_task()
 def delete_set_task(one_ago):
     # Started task, after 900 seconds / 15 min...
-    time.sleep(60)
+    time.sleep(900)
     # time_ago = datetime.datetime.now() - datetime.timedelta(seconds=900)
-    time_ago = timezone.datetime.now() - timezone.timedelta(seconds=60)
+    time_ago = timezone.datetime.now() - timezone.timedelta(seconds=900)
     MyFile.objects.filter(created_at__lte=time_ago).delete()
     return True

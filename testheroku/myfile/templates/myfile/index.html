@@ -46,7 +46,7 @@
         <p>File updated at: <a href="{{ file_url }}">{{ file_url }}</a></p>
         <br /><a href="{% url 'myfile:exclude_files' %}" class="button">"Please click here to clean your files"</a><br />
     {% else %}
-        <br /><p>No Files at moment.</p><br />
+        <br /><p>No Files at moment. Files are deleted after 15 minutes of insertion</p><br />
     {% endif %}
 </body>
 </html>
