@@ -126,8 +126,7 @@ else:
 
 
 # ########################## REDIS
-CELERY_BROKER_URL = config('REDIS_URL_DESENV')
-
+CELERY_BROKER_URL = config('REDIS_URL')
 
 # Configurando Celery para rodar em paralelo (True => para testes)
 CELERY_TASK_ALWAYS_EAGER = config('CELERY_TASK_ALWAYS_EAGER_DESENV', default=False, cast=bool)

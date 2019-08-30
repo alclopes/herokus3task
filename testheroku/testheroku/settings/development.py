@@ -5,8 +5,10 @@ from decouple import config
 # ############## DEBUG
 DEBUG = config('DEBUG_DESENV', default=True, cast=bool)
 
-# ############## CELERY
+# ########################## REDIS
+CELERY_BROKER_URL = config('REDIS_URL_DESENV')
 
+# ############## CELERY
 
 # ############## Servidores autorizados
 ALLOWED_HOSTS = config('ALLOWED_HOSTS_DEV', cast=lambda v: [s.strip() for s in v.split(',')])
