@@ -69,7 +69,7 @@ Meet this application on [Heroku] (https://herokus3task.herokuapp.com).
 ##### 3. Medium File Management
 => Status: Done / Success (more details below)
 
-#### Project Status Details
+## Project Status Details
 
 ##### 1. Static Files - Situation: OK
 * Involved: Files / Images and CSS
