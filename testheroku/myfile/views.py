@@ -42,9 +42,9 @@ def myfile(request):
 
 # view to delete all register and files
 def exclude_files(request):
-    def exclude_files(request):
-        context = {}
-        MyFile.objects.all().delete()
-        myimages = {}
-        context['myimages'] = myimages
-        return render(request, 'myfile/index.html', context)
+    context = {}
+    MyFile.objects.all().delete()
+    myimages = {}
+    context['myimages'] = myimages
+    return render(request, 'myfile/index.html', context)
+
